@@ -16,5 +16,5 @@ jobs:
           memory: 8192
           usesh: true
           run: |
-            find . -name '*.h' -printf '%h\n' | sort -u
+            find . -name '*.h' -print '%h\n' | sort -u
 
