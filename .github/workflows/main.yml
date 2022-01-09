@@ -13,7 +13,6 @@ jobs:
         uses: os-runners/freebsd-vm@main
         with:
           version: 12.3
-          memory: 4096
           usesh: true
           run: |
             df -h
