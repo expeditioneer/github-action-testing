@@ -8,6 +8,7 @@ jobs:
     runs-on: macos-10.15
     steps:
       - run: |
+          free -m
           df -h
       - name: start and test FreeBSD VM
         uses: os-runners/freebsd-vm@main
@@ -16,3 +17,6 @@ jobs:
           usesh: true
           run: |
             df -h
+      - run: |
+          free -m
+          df -h
