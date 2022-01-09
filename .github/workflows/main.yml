@@ -17,5 +17,5 @@ jobs:
           usesh: true
           prepare: pkg install -y poudriere-devel
           run: |
-            cat /usr/local/etc/poudriere.conf
+            ls -l /usr/
 
