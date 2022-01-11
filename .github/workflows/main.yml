@@ -15,8 +15,7 @@ jobs:
           version: 12.3
           memory: 8192
           usesh: true
-          prepare: pkg install -y poudriere-devel
+          prepare: pkg install -y pkg
           run: |
-            pkg update
-            pkg upgrade -y
+            cat /usr/local/etc/pkg.conf
 
