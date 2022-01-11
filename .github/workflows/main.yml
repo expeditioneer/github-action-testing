@@ -17,6 +17,6 @@ jobs:
           usesh: true
           prepare: pkg install -y poudriere-devel
           run: |
-            pkg upgrade
-            pkg -y update
+            pkg update
+            pkg upgrade -y
 
