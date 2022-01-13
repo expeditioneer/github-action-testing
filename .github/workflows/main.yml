@@ -15,6 +15,5 @@ jobs:
           version: 12.3
           memory: 8192
           usesh: true
-          prepare: pkg install -y pkg
           run: |
-            rsync -h        
+            uname -r
