@@ -17,7 +17,4 @@ jobs:
           usesh: true
           prepare: pkg install -y pkg
           run: |
-            echo "*** /usr/local/etc/pkg.conf ***"
-            cat /usr/local/etc/pkg.conf
-            echo "*** /etc/pkg/FreeBSD.conf ***"
-            cat /etc/pkg/FreeBSD.conf            
+            rsync -h        
