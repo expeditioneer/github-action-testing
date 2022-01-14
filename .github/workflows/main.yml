@@ -16,4 +16,5 @@ jobs:
           memory: 8192
           usesh: true
           run: |
-            uname -r
+            ls -l /etc/ssh
+            cat /etc/ssh/sshd_config
