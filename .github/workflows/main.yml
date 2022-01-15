@@ -18,3 +18,4 @@ jobs:
           run: |
             ls -l /etc/ssh
             cat /etc/ssh/sshd_config
+            ssh -Q mac
