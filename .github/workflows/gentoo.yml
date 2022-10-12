@@ -15,7 +15,7 @@ jobs:
           - pi: 4
 
     steps:
-      - uses: actions/checkout@v2.1.0
+      - uses: actions/checkout@v3
 
       - name: Build for Raspberry PI 3
         uses: expeditioneer/run-on-arch-action@master
