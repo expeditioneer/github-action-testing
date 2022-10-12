@@ -6,34 +6,29 @@ on: [push]
 jobs:
   test_gentoo_build:
     runs-on: ubuntu-latest
-    name: Build on gentoo_latest ${{ matrix.arch }}
+    name: Build for Raspberry PI 3 aarch64
     
     strategy:
       matrix:
         include:
-          - arch: aarch64
-          - arch: armv6
-          - arch: armv7
-          - arch: ppc64le
-          - arch: s390x
+          - pi: 3
+          - pi: 4
+
     steps:
       - uses: actions/checkout@v2.1.0
-      
-      - uses: expeditioneer/run-on-arch-action@master
-        name: Run commands
-        id: runcmd
+
+      - name: Build for Raspberry PI 3
+        uses: expeditioneer/run-on-arch-action@master
         with:
-          arch: ${{ matrix.arch }}
+          arch: aarch64
           distro: gentoo_latest
           githubToken: ${{ github.token }}
+          dockerRunArgs: |
+            --volume "${PWD}/PI3:/etc/portage"
           run: |
             echo "***********************************************************************"
-            echo "/etc/portage/make.conf:" 
             cat /etc/portage/make.conf
             echo "***********************************************************************"
-            echo "gcc -v"
-            gcc -v
+            echo "emaint --all sync"
             echo "***********************************************************************"
-            echo "cat /proc/cpuinfo"
-            cat /proc/cpuinfo
-            echo "***********************************************************************"
+            emerge -v sys-kernel/raspberrypi-sources 
