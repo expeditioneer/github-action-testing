@@ -6,7 +6,16 @@ on: [push]
 jobs:
   test_gentoo_build:
     runs-on: ubuntu-latest
-    name: Build on gentoo aarch64
+    name: Build on gentoo_latest ${{ matrix.arch }}
+    
+    strategy:
+      matrix:
+        include:
+          - arch: aarch64
+          - arch: armv6
+          - arch: armv7
+          - arch: ppc64le
+          - arch: s390x
     steps:
       - uses: actions/checkout@v2.1.0
       
@@ -14,8 +23,9 @@ jobs:
         name: Run commands
         id: runcmd
         with:
-          arch: aarch64
-          distro: gentoo
+          arch: ${{ matrix.arch }}
+          distro: gentoo_latest
+          githubToken: ${{ github.token }}
           run: |
             echo "***********************************************************************"
             echo "/etc/portage/make.conf:" 
