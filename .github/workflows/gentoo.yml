@@ -29,7 +29,6 @@ jobs:
             --volume "${PWD}/PI${{ matrix.pi }}:/etc/portage"
             --volume "portage:/var/db/repos/gentoo"
           run: |
-            mkdir /var/db/repos/gentoo
             echo "***********************************************************************"
             cat /etc/portage/make.conf
             echo "***********************************************************************"
