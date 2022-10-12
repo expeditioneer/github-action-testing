@@ -6,7 +6,7 @@ on: [push]
 jobs:
   test_gentoo_build:
     runs-on: ubuntu-latest
-    name: Build for Raspberry PI 3 aarch64
+    name: Build for Raspberry PI {{ matrix.pi }} aarch64
     
     strategy:
       matrix:
@@ -24,11 +24,12 @@ jobs:
           distro: gentoo_latest
           githubToken: ${{ github.token }}
           dockerRunArgs: |
-            --volume "${PWD}/PI3:/etc/portage"
+            --volume "${PWD}/PI{{ matrix.pi }}:/etc/portage"
           run: |
+            mkdir /var/db/repos/gentoo
             echo "***********************************************************************"
             cat /etc/portage/make.conf
             echo "***********************************************************************"
             echo "emaint --all sync"
             echo "***********************************************************************"
-            emerge -v sys-kernel/raspberrypi-sources 
+            emerge -v sys-kernel/raspberrypi-sources
