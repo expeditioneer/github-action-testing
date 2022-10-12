@@ -22,9 +22,12 @@ jobs:
         with:
           arch: aarch64
           distro: gentoo_latest
-          githubToken: ${{ github.token }}
+          setup: |
+            docker volume create portage
+            docker run -d -it --name=portage -v portage:/var/db/repos/gentoo gentoo/portage
           dockerRunArgs: |
             --volume "${PWD}/PI${{ matrix.pi }}:/etc/portage"
+            --volume "portage:/var/db/repos/gentoo"
           run: |
             mkdir /var/db/repos/gentoo
             echo "***********************************************************************"
