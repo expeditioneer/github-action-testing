@@ -30,4 +30,4 @@ jobs:
             --volume "portage:/var/db/repos/gentoo"
           run: |
             eselect profile set default/linux/arm64/17.0/systemd
-            emerge -v sys-kernel/raspberrypi-sources
+            emerge sys-kernel/raspberrypi-sources
