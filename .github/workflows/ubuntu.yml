@@ -1,0 +1,22 @@
+name: Test
+
+on: [push]
+
+jobs:
+  test_gentoo_build:
+    runs-on: ubuntu
+    name: Build on gentoo aarch64
+    steps:
+      - uses: actions/checkout@v2.1.0
+      
+      - uses: expeditioneer/run-on-arch-action@master
+        name: Run commands
+        id: runcmd
+        with:
+          arch: aarch64
+          distro: ubuntu
+          run: |
+            echo "***********************************************************************"
+            echo "gcc -v"
+            gcc -v
+            echo "***********************************************************************"
