@@ -14,7 +14,7 @@ jobs:
         id: runcmd
         with:
           arch: aarch64
-          distro: ubuntu
+          distro: ubuntu_latest
           run: |
             echo "***********************************************************************"
             echo "gcc -v"
