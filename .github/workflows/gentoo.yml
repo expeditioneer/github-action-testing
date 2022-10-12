@@ -29,11 +29,5 @@ jobs:
             --volume "${PWD}/PI${{ matrix.pi }}:/etc/portage"
             --volume "portage:/var/db/repos/gentoo"
           run: |
-            echo "***********************************************************************"
-            cat /etc/portage/make.conf
-            echo "***********************************************************************"
-            emaint --all sync
-            echo "***********************************************************************"
             eselect profile set default/linux/arm64/17.0/systemd
-            echo "***********************************************************************"
             emerge -v sys-kernel/raspberrypi-sources
