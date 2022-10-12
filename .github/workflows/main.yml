@@ -17,8 +17,11 @@ jobs:
           arch: aarch64
           distro: gentoo
           
-          # Set an output parameter `uname` for use in subsequent steps
           run: |
-            uname -a
-            echo ::set-output name=uname::$(uname -a)
+            echo "***********************************************************************"
+            echo "/etc/portage/make.conf:" 
             cat /etc/portage/make.conf
+            echo "***********************************************************************"
+            echo "gcc -v"
+            gcc -v
+            echo "***********************************************************************"
