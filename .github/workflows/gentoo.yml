@@ -25,7 +25,6 @@ jobs:
         with:
           arch: ${{ matrix.arch }}
           distro: gentoo_latest
-          githubToken: ${{ github.token }}
           run: |
             echo "***********************************************************************"
             echo "/etc/portage/make.conf:" 
