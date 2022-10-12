@@ -4,8 +4,8 @@ on: [push]
 
 jobs:
   test_gentoo_build:
-    runs-on: ubuntu
-    name: Build on gentoo aarch64
+    runs-on: ubuntu-latest
+    name: Build on ubuntu aarch64
     steps:
       - uses: actions/checkout@v2.1.0
       
