@@ -17,17 +17,22 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Build for Raspberry PI 3
+      - name: create binary packages
         uses: expeditioneer/run-on-arch-action@master
         with:
           arch: aarch64
           distro: gentoo_latest
           setup: |
+            mkdir ${PWD}/binpkgs
             docker volume create portage
             docker run -d -it --name=portage -v portage:/var/db/repos/gentoo gentoo/portage
           dockerRunArgs: |
+            --volume "${PWD}/binpkgs:/var/cache/binpkgs/"
             --volume "${PWD}/PI${{ matrix.pi }}:/etc/portage"
             --volume "portage:/var/db/repos/gentoo"
           run: |
             eselect profile set default/linux/arm64/17.0/systemd
             emerge sys-kernel/raspberrypi-sources
+
+      - name: upload packages to storage
+        run: ls -l ${PWD}/binpkgs
