@@ -32,6 +32,11 @@ jobs:
             --volume "portage:/var/db/repos/gentoo"
           run: |
             eselect profile set default/linux/arm64/17.0/systemd
+            emerge app-arch/lz4
+            echo 'FEATURES="buildpkg"' >> /etc/portage/make.conf
+            echo 'BINPKG_FORMAT="gpkg"' >> /etc/portage/make.conf
+            echo 'BINPKG_COMPRESS="lz4"' >> /etc/portage/make.conf
+            echo $'\n' >> /etc/portage/make.conf
             emerge sys-kernel/raspberrypi-sources
 
       - name: upload packages to storage
