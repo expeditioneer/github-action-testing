@@ -40,4 +40,4 @@ jobs:
             emerge sys-kernel/raspberrypi-sources
 
       - name: upload packages to storage
-        run: ls -l ${PWD}/binpkgs
+        run: ls -lR ${PWD}/binpkgs
